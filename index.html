@@ -205,19 +205,158 @@
             50% { transform: translateY(-20px) scale(1.2); }
         }
 
-        .year-counter {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 15px 25px;
-            border-radius: 50px;
+        .stats-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 80px 60px;
+            margin: 100px 0;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .stats-title {
+            font-size: 3.5rem;
             color: white;
-            font-size: 1.2rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            z-index: 1000;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .stats-subtitle {
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff9a9e, #fecfef, #ffecd2);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            counter-reset: stat-counter;
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .stat-detail {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+            font-style: normal;
+        }
+
+        .wrapped-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .wrapped-year {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .counter-animation {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .counter-animation.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .stats-section {
+                padding: 60px 40px;
+                margin: 60px 0;
+            }
+
+            .stats-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .stat-card {
+                padding: 30px 20px;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .wrapped-year {
+                font-size: 3.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -271,7 +410,7 @@
 </head>
 <body>
     <!-- Year Counter -->
-    <div class="year-counter">6 Years ❤️</div>
+    <div style="position: fixed; top: 30px; right: 30px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 15px 25px; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.3); z-index: 1000;">6 Years ❤️</div>
 
     <!-- Floating Hearts -->
     <div class="floating-hearts">
@@ -289,6 +428,75 @@
                 <h1>Six Years of Us</h1>
                 <p>Celebrating our beautiful journey together</p>
                 <div class="anniversary-emoji">💕✨💕</div>
+            </div>
+        </div>
+
+        <!-- Our Love Wrapped Section -->
+        <div class="stats-section fade-in">
+            <div class="wrapped-header">
+                <div class="wrapped-year">2024</div>
+                <h2 style="font-size: 2.5rem; margin: 0; font-weight: 300;">Our Love Wrapped</h2>
+            </div>
+            
+            <div class="stats-title">Six Years in Numbers</div>
+            <div class="stats-subtitle">Here's what we've built together...</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">✈️</div>
+                    <div class="stat-number counter-animation" data-target="12">0</div>
+                    <div class="stat-label">Places Traveled Together</div>
+                    <div class="stat-detail">From weekend getaways to dream vacations</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number counter-animation" data-target="2190">0</div>
+                    <div class="stat-label">Days Since We Met</div>
+                    <div class="stat-detail">And counting every single one</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">😂</div>
+                    <div class="stat-number counter-animation" data-target="∞">0</div>
+                    <div class="stat-label">Inside Jokes Created</div>
+                    <div class="stat-detail">Too many to count (but we remember them all)</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">🍕</div>
+                    <div class="stat-number counter-animation" data-target="47">0</div>
+                    <div class="stat-label">New Restaurants Tried</div>
+                    <div class="stat-detail">Always finding new favorite spots</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-number counter-animation" data-target="3">0</div>
+                    <div class="stat-label">Homes We've Made Together</div>
+                    <div class="stat-detail">Each one more "us" than the last</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">💕</div>
+                    <div class="stat-number counter-animation" data-target="∞">0</div>
+                    <div class="stat-label">Times I've Fallen for You</div>
+                    <div class="stat-detail">Every single day, over and over</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">🎬</div>
+                    <div class="stat-number counter-animation" data-target="127">0</div>
+                    <div class="stat-label">Movies Watched Together</div>
+                    <div class="stat-detail">Including the ones you fell asleep during</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-icon">☕</div>
+                    <div class="stat-number counter-animation" data-target="892">0</div>
+                    <div class="stat-label">Morning Coffees Shared</div>
+                    <div class="stat-detail">The best way to start every day</div>
+                </div>
             </div>
         </div>
 
@@ -372,6 +580,53 @@
             document.querySelectorAll('.fade-in').forEach(el => {
                 el.classList.remove('visible');
                 observer.observe(el);
+            });
+
+            // Animated counters for stats
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const isInfinity = target === '∞';
+                
+                function updateCounter() {
+                    if (isInfinity) {
+                        element.textContent = '∞';
+                        return;
+                    }
+                    
+                    if (start < target) {
+                        start += increment;
+                        element.textContent = Math.floor(start).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        element.textContent = target.toLocaleString();
+                    }
+                }
+                updateCounter();
+            }
+
+            // Trigger counter animations when stats come into view
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.target.classList.contains('counter-animation')) {
+                        const target = entry.target.dataset.target;
+                        entry.target.classList.add('animate');
+                        
+                        setTimeout(() => {
+                            if (target === '∞') {
+                                entry.target.textContent = '∞';
+                            } else {
+                                animateCounter(entry.target, parseInt(target));
+                            }
+                        }, 200);
+                        
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.counter-animation').forEach(counter => {
+                statsObserver.observe(counter);
             });
 
             // Scroll indicator for first time
