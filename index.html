@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six Years of Us ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .fade-in {
+            opacity: 0 !important;
+            transform: translateY(50px) !important;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 80px 60px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ffecd2);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 4s ease infinite;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .anniversary-emoji {
+            font-size: 4rem;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            margin: 120px 0;
+            gap: 80px;
+            min-height: 80vh;
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .image-container {
+            flex: 1;
+            max-width: 450px;
+        }
+
+        .content-image {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .content-image:hover {
+            transform: scale(1.03) translateY(-10px);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .caption-container {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .caption-container h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .caption-container p {
+            font-size: 1.5rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-style: italic;
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: white;
+            text-align: center;
+            padding: 100px 60px;
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .final-message h2 {
+            font-size: 3.8rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .final-message p {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: -100px;
+            animation: float-hearts 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 2rem;
+        }
+
+        .heart {
+            display: inline-block;
+            margin: 0 15px;
+            animation: heartFloat 6s ease-in-out infinite;
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; color: #ff6b6b; }
+        .heart:nth-child(2) { left: 30%; animation-delay: -2s; color: #ff9a9e; }
+        .heart:nth-child(3) { left: 50%; animation-delay: -4s; color: #fecfef; }
+        .heart:nth-child(4) { left: 70%; animation-delay: -1s; color: #ff6b6b; }
+        .heart:nth-child(5) { left: 90%; animation-delay: -3s; color: #ff9a9e; }
+
+        @keyframes float-hearts {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-40px) rotate(2deg); }
+        }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.2); }
+        }
+
+        .year-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.4rem; }
+            
+            .content-section {
+                flex-direction: column !important;
+                gap: 50px;
+                margin: 80px 0;
+                text-align: center;
+            }
+            
+            .image-container {
+                max-width: 100%;
+            }
+
+            .content-image {
+                height: 350px;
+                font-size: 1.4rem;
+            }
+
+            .caption-container {
+                padding: 20px;
+            }
+
+            .caption-container h2 {
+                font-size: 2.5rem;
+            }
+
+            .caption-container p {
+                font-size: 1.3rem;
+            }
+
+            .final-message h2 {
+                font-size: 2.8rem;
+            }
+
+            .final-message p {
+                font-size: 1.4rem;
+            }
+
+            .year-counter {
+                top: 20px;
+                right: 20px;
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Year Counter -->
+    <div class="year-counter">6 Years ❤️</div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts">
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+        <div class="heart">💗</div>
+        <div class="heart">💝</div>
+        <div class="heart">💕</div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="section">
+            <div class="hero fade-in">
+                <h1>Six Years of Us</h1>
+                <p>Celebrating our beautiful journey together</p>
+                <div class="anniversary-emoji">💕✨💕</div>
+            </div>
+        </div>
+
+        <!-- Content Sections with Alternating Layout -->
+        
+        <!-- Section 1: Our Beginning -->
+        <div class="content-section fade-in">
+            <div class="image-container">
+                <div class="content-image">💕 Our First Photo</div>
+            </div>
+            <div class="caption-container">
+                <h2>Where It All Began</h2>
+                <p>Six years ago, we started this incredible journey together. From that very first moment, I knew there was something special about us. Thank you for choosing to build this beautiful life with me, one day at a time.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Adventures Together -->
+        <div class="content-section reverse fade-in">
+            <div class="image-container">
+                <div class="content-image">✈️ Adventure Photo</div>
+            </div>
+            <div class="caption-container">
+                <h2>Adventures & Dreams</h2>
+                <p>From spontaneous road trips to quiet Sunday mornings, every moment with you feels like an adventure. We've explored new places, tried new things, and most importantly, we've grown together through it all.</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Daily Love -->
+        <div class="content-section fade-in">
+            <div class="image-container">
+                <div class="content-image">🏠 Cozy Moment</div>
+            </div>
+            <div class="caption-container">
+                <h2>Everyday Magic</h2>
+                <p>It's not just the big moments that make us special - it's the way you laugh at my jokes, how you steal my hoodies, our inside jokes, and the way you make even the most ordinary days feel extraordinary.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Looking Forward -->
+        <div class="content-section reverse fade-in">
+            <div class="image-container">
+                <div class="content-image">🌅 Future Dreams</div>
+            </div>
+            <div class="caption-container">
+                <h2>Forever & Always</h2>
+                <p>Six years down, forever to go. I can't wait to see what the future holds for us - more adventures, more laughter, more love, and more memories that will last a lifetime. You're my favorite person, always.</p>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message fade-in">
+            <h2>Happy 6th Anniversary</h2>
+            <p>To the love of my life, my best friend, my everything.</p>
+            <p>Here's to us, to our love, and to many more years of happiness together.</p>
+            <div class="anniversary-emoji">💕👫💕</div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll-synchronized fade animations
+            const observerOptions = {
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const visibilityRatio = entry.intersectionRatio;
+                    
+                    if (visibilityRatio >= 0.2) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.remove('visible');
+                observer.observe(el);
+            });
+
+            // Scroll indicator for first time
+            let hasScrolled = false;
+            const scrollIndicator = document.createElement('div');
+            scrollIndicator.innerHTML = '↓ Scroll to see our story ↓';
+            scrollIndicator.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-size: 1.2rem;
+                opacity: 0.8;
+                animation: pulse 2s infinite;
+                pointer-events: none;
+                z-index: 1000;
+                text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+                font-style: italic;
+            `;
+            
+            const pulseKeyframes = document.createElement('style');
+            pulseKeyframes.textContent = `
+                @keyframes pulse {
+                    0%, 100% { opacity: 0.8; }
+                    50% { opacity: 0.4; }
+                }
+            `;
+            document.head.appendChild(pulseKeyframes);
+            document.body.appendChild(scrollIndicator);
+
+            // Hide scroll indicator after first scroll
+            window.addEventListener('scroll', () => {
+                if (!hasScrolled) {
+                    hasScrolled = true;
+                    scrollIndicator.style.transition = 'opacity 0.5s ease';
+                    scrollIndicator.style.opacity = '0';
+                    setTimeout(() => scrollIndicator.remove(), 500);
+                }
+            }, { once: true });
+
+            // Add romantic sparkles on click
+            document.addEventListener('click', (e) => {
+                createHeart(e.clientX, e.clientY);
+            });
+
+            function createHeart(x, y) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.style.position = 'fixed';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.fontSize = '1.5rem';
+                heart.style.pointerEvents = 'none';
+                heart.style.animation = 'heartSparkle 1.5s ease-out forwards';
+                heart.style.zIndex = '9999';
+                
+                document.body.appendChild(heart);
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes heartSparkle {
+                        0% {
+                            transform: scale(0) rotate(0deg);
+                            opacity: 1;
+                        }
+                        50% {
+                            transform: scale(1.2) rotate(180deg);
+                            opacity: 0.8;
+                        }
+                        100% {
+                            transform: scale(0) rotate(360deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                setTimeout(() => {
+                    heart.remove();
+                    style.remove();
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
