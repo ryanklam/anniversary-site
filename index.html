@@ -459,6 +459,59 @@
                 padding: 10px 20px;
             }
         }
+
+        /* Landscape mode fixes */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .section {
+                min-height: auto;
+                padding: 40px 20px;
+            }
+
+            .hero {
+                padding: 40px 30px;
+            }
+
+            .stats-section {
+                padding: 60px 40px;
+                margin: 60px auto;
+                min-height: auto;
+            }
+
+            .stats-title {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .stats-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            .stats-grid {
+                margin: 30px 0;
+            }
+
+            .stat-card {
+                padding: 25px 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                margin: 60px auto;
+                min-height: auto;
+            }
+
+            .content-image {
+                height: 300px;
+            }
+
+            .final-message {
+                padding: 60px 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -838,14 +891,15 @@
             // Scroll-synchronized fade animations
             const observerOptions = {
                 threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-                rootMargin: '0px'
+                rootMargin: '0px 0px -50px 0px'
             };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const visibilityRatio = entry.intersectionRatio;
                     
-                    if (visibilityRatio >= 0.2) {
+                    // Lower threshold for better mobile landscape support
+                    if (visibilityRatio >= 0.1) {
                         entry.target.classList.add('visible');
                     } else {
                         entry.target.classList.remove('visible');
