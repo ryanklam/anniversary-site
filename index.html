@@ -111,7 +111,7 @@
         .content-image {
             width: 100%;
             height: 450px;
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            /* background: linear-gradient(135deg, #ff9a9e, #fecfef); */
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -147,7 +147,7 @@
             line-height: 1.9;
             color: rgba(255, 255, 255, 0.95);
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-            font-style: italic;
+            /* font-style: italic; */
         }
 
         .final-message {
@@ -327,6 +327,59 @@
             transform: scale(1);
         }
 
+        .polaroid-row-layout {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .polaroid-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px;
+            padding-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.5) translateY(-10px) !important;
+            z-index: 100 !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .polaroid img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .polaroid-row {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .polaroid {
+                margin-left: 0 !important;
+            }
+            
+            .polaroid img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
         @media (max-width: 768px) {
             .stats-section {
                 padding: 60px 40px;
@@ -410,7 +463,7 @@
 </head>
 <body>
     <!-- Year Counter -->
-    <div style="position: fixed; top: 30px; right: 30px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 15px 25px; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.3); z-index: 1000;">6 Years ❤️</div>
+    <!-- <div style="position: fixed; top: 30px; right: 30px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 15px 25px; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.3); z-index: 1000;">6 Years ❤️</div> -->
 
     <!-- Floating Hearts -->
     <div class="floating-hearts">
@@ -425,8 +478,11 @@
         <!-- Hero Section -->
         <div class="section">
             <div class="hero fade-in">
-                <h1>Six Years of Us</h1>
-                <p>Celebrating our beautiful journey together</p>
+                <h1>You're my Big Hero!</h1>
+                <h2>Thank you for <span style="color: #f57eed;">6</span> amazing years!</h2>
+                <div class="image-container" style="padding-top: 40px;">
+                    <img src="images/big-hero6-baymax.gif" alt="Our Big Hero"  style="object-fit: none;">
+                </div>
                 <div class="anniversary-emoji">💕✨💕</div>
             </div>
         </div>
@@ -434,21 +490,14 @@
         <!-- Our Love Wrapped Section -->
         <div class="stats-section fade-in">
             <div class="wrapped-header">
-                <div class="wrapped-year">2024</div>
-                <h2 style="font-size: 2.5rem; margin: 0; font-weight: 300;">Our Love Wrapped</h2>
+                <div class="wrapped-year">2019 - 2025</div>
+                <h2 style="font-size: 2.5rem; margin: 0; font-weight: 300;">Us Wrapped</h2>
             </div>
             
             <div class="stats-title">Six Years in Numbers</div>
             <div class="stats-subtitle">Here's what we've built together...</div>
             
             <div class="stats-grid">
-                <div class="stat-card fade-in">
-                    <div class="stat-icon">✈️</div>
-                    <div class="stat-number counter-animation" data-target="12">0</div>
-                    <div class="stat-label">Places Traveled Together</div>
-                    <div class="stat-detail">From weekend getaways to dream vacations</div>
-                </div>
-
                 <div class="stat-card fade-in">
                     <div class="stat-icon">📅</div>
                     <div class="stat-number counter-animation" data-target="2190">0</div>
@@ -457,10 +506,10 @@
                 </div>
 
                 <div class="stat-card fade-in">
-                    <div class="stat-icon">😂</div>
-                    <div class="stat-number counter-animation" data-target="∞">0</div>
-                    <div class="stat-label">Inside Jokes Created</div>
-                    <div class="stat-detail">Too many to count (but we remember them all)</div>
+                    <div class="stat-icon">✈️</div>
+                    <div class="stat-number counter-animation" data-target="12">0</div>
+                    <div class="stat-label">Places Traveled Together</div>
+                    <div class="stat-detail">From weekend getaways to dream vacations</div>
                 </div>
 
                 <div class="stat-card fade-in">
@@ -472,7 +521,7 @@
 
                 <div class="stat-card fade-in">
                     <div class="stat-icon">🏠</div>
-                    <div class="stat-number counter-animation" data-target="3">0</div>
+                    <div class="stat-number counter-animation" data-target="2">0</div>
                     <div class="stat-label">Homes We've Made Together</div>
                     <div class="stat-detail">Each one more "us" than the last</div>
                 </div>
@@ -484,19 +533,6 @@
                     <div class="stat-detail">Every single day, over and over</div>
                 </div>
 
-                <div class="stat-card fade-in">
-                    <div class="stat-icon">🎬</div>
-                    <div class="stat-number counter-animation" data-target="127">0</div>
-                    <div class="stat-label">Movies Watched Together</div>
-                    <div class="stat-detail">Including the ones you fell asleep during</div>
-                </div>
-
-                <div class="stat-card fade-in">
-                    <div class="stat-icon">☕</div>
-                    <div class="stat-number counter-animation" data-target="892">0</div>
-                    <div class="stat-label">Morning Coffees Shared</div>
-                    <div class="stat-detail">The best way to start every day</div>
-                </div>
             </div>
         </div>
 
@@ -508,7 +544,7 @@
                 <div class="content-image">💕 Our First Photo</div>
             </div>
             <div class="caption-container">
-                <h2>Where It All Began</h2>
+                <h2>Our Early Days</h2>
                 <p>Six years ago, we started this incredible journey together. From that very first moment, I knew there was something special about us. Thank you for choosing to build this beautiful life with me, one day at a time.</p>
             </div>
         </div>
@@ -516,33 +552,205 @@
         <!-- Section 2: Adventures Together -->
         <div class="content-section reverse fade-in">
             <div class="image-container">
-                <div class="content-image">✈️ Adventure Photo</div>
+                <div class="polaroid-row-layout">
+                    <!-- First row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(-3deg); z-index: 3;">
+                            <img src="images/outdoor/hawaii.jpeg" alt="Memory 1">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/outdoor/river.jpeg" alt="Memory 2">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-4deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/outdoor/tahoe.jpeg" alt="Memory 3">
+                        </div>
+                    </div>
+                    
+                    <!-- Second row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(4deg); z-index: 3;">
+                            <img src="images/outdoor/yosemite.jpg" alt="Memory 4">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/outdoor/snowboard.jpeg" alt="Memory 5">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(3deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/outdoor/china.jpeg" alt="Memory 6">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="caption-container">
-                <h2>Adventures & Dreams</h2>
-                <p>From spontaneous road trips to quiet Sunday mornings, every moment with you feels like an adventure. We've explored new places, tried new things, and most importantly, we've grown together through it all.</p>
+                <h2>Time Spent Outdoors</h2>
+                <p>
+                    From camping to snowboarding to visiting parks, we've spent a lot of time outdoors together!
+                    I'm so grateful to have someone who enjoys nature and being outside with me, whether it's hot
+                    and sunny or cold and rainy.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-section reverse fade-in">
+            <div class="image-container">
+                <div class="polaroid-row-layout">
+                    <!-- First row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(-3deg); z-index: 3;">
+                            <img src="images/outdoor/hawaii.jpeg" alt="Memory 1">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/outdoor/river.jpeg" alt="Memory 2">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-4deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/outdoor/tahoe.jpeg" alt="Memory 3">
+                        </div>
+                    </div>
+                    
+                    <!-- Second row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(4deg); z-index: 3;">
+                            <img src="images/outdoor/yosemite.jpg" alt="Memory 4">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/outdoor/snowboard.jpeg" alt="Memory 5">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(3deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/outdoor/china.jpeg" alt="Memory 6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption-container">
+                <h2>Traveling Together</h2>
+                <p>
+                    You're my favorite travel partner, and I love that we push each other to be more adventurous and 
+                    seek out new experiences. Whether it's quick local getaways to international vacations, every trip with you feels special. 
+                    We've only been to 2 continents and 3 countries together so far, but I'm sure that number will grow very soon!
+                </p>
+            </div>
+        </div>
+
+
+        <div class="content-section reverse fade-in">
+            <div class="image-container">
+                <div class="polaroid-row-layout">
+                    <!-- First row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(-3deg); z-index: 3;">
+                            <img src="images/outdoor/hawaii.jpeg" alt="Memory 1">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/outdoor/river.jpeg" alt="Memory 2">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-4deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/outdoor/tahoe.jpeg" alt="Memory 3">
+                        </div>
+                    </div>
+                    
+                    <!-- Second row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(4deg); z-index: 3;">
+                            <img src="images/outdoor/yosemite.jpg" alt="Memory 4">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/outdoor/snowboard.jpeg" alt="Memory 5">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(3deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/outdoor/china.jpeg" alt="Memory 6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caption-container">
+                <h2>Loved Ones</h2>
+                <p>
+                    I truly feel like I've found a second family in yours, and I hope you feel the same with mine. Always looking forward to visiting home and catching up with everyone, and hopefully more vacations in the future too!
+                </p>
             </div>
         </div>
 
         <!-- Section 3: Daily Love -->
         <div class="content-section fade-in">
             <div class="image-container">
-                <div class="content-image">🏠 Cozy Moment</div>
+                <div class="polaroid-row-layout">
+                    <!-- First row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(-3deg); z-index: 3;">
+                            <img src="images/dog/IMG_1418.jpeg" alt="Memory 1">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/dog/IMG_2212.jpeg" alt="Memory 2">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-4deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/dog/IMG_3526.jpeg" alt="Memory 3">
+                        </div>
+                    </div>
+                    
+                    <!-- Second row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(-2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/dog/IMG_5287.jpeg" alt="Memory 5">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(4deg); z-index: 3;">
+                            <img src="images/dog/IMG_3635.jpeg" alt="Memory 4">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(3deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/dog/IMG_8305.jpeg" alt="Memory 6">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="caption-container">
-                <h2>Everyday Magic</h2>
-                <p>It's not just the big moments that make us special - it's the way you laugh at my jokes, how you steal my hoodies, our inside jokes, and the way you make even the most ordinary days feel extraordinary.</p>
+                <h2>Hanging Out With The Boys</h2>
+                <p>
+                    It's tough competing with Soju and Sake for your love and attention
+                    (I know you like them more than me 😔). But some of my favorite memories
+                    are just us petting, playing with, and cuddling the boys.
+                </p>
+                <br>
+                <p>
+                    Do they know it's their 4 year anniversary with me and you???
+                </p>
             </div>
         </div>
 
         <!-- Section 4: Looking Forward -->
         <div class="content-section reverse fade-in">
             <div class="image-container">
-                <div class="content-image">🌅 Future Dreams</div>
+                <div class="polaroid-row-layout">
+                    <!-- First row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(-3deg); z-index: 3;">
+                            <img src="images/mess/IMG_2319.jpeg" alt="Memory 1">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/mess/IMG_3579.jpeg" alt="Memory 2">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-4deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/mess/IMG_3675.jpeg" alt="Memory 3">
+                        </div>
+                    </div>
+                    
+                    <!-- Second row -->
+                    <div class="polaroid-row">
+                        <div class="polaroid" style="transform: rotate(4deg); z-index: 3;">
+                            <img src="images/mess/IMG_3665.jpeg" alt="Memory 4">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(-2deg); z-index: 2; margin-left: -30px;">
+                            <img src="images/mess/IMG_4236.jpeg" alt="Memory 5">
+                        </div>
+                        <div class="polaroid" style="transform: rotate(3deg); z-index: 1; margin-left: -30px;">
+                            <img src="images/mess/IMG_4982.jpeg" alt="Memory 6">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="caption-container">
-                <h2>Forever & Always</h2>
-                <p>Six years down, forever to go. I can't wait to see what the future holds for us - more adventures, more laughter, more love, and more memories that will last a lifetime. You're my favorite person, always.</p>
+                <h2>Just Messing Around</h2>
+                <p>
+                    You always tend to bring out my goofy side, and I cherish each silly moment of laughter we share.
+                    You just do such funny things sometimes!
+                </p>
             </div>
         </div>
 
